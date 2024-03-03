@@ -1,6 +1,6 @@
 # CPPND: Concurrent Traffic Simulation
 
-<img src="data/traffic_simulation.gif"/>
+<img src="data/image.png"/>
 
 This repository contains a concurrent traffic light simulation which uses c++ concurrent features to build a communication protocol between vehicle and intersections to mange the seemles traffic flow. 
 
