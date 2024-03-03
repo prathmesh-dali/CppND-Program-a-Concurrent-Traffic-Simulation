@@ -31,7 +31,7 @@ class TrafficLight : public TrafficObject {
   // getters / setters
   TrafficLightPhase getCurrentPhase();
   // typical behaviour methods
-  void waitForGreen();
+  void waitForGreen(int intersectionId, int vehicleId);
   void simulate();
 
  private:

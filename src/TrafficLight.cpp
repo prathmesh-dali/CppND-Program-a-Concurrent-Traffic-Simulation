@@ -27,9 +27,10 @@ void MessageQueue<T>::send(T &&msg) {
 
 TrafficLight::TrafficLight() { _currentPhase = TrafficLightPhase::red; }
 
-void TrafficLight::waitForGreen() {
+void TrafficLight::waitForGreen(int intersectionId, int vehicleId) {
   while (true) {
     if (_queue.receive() == TrafficLightPhase::green) {
+        std::cout << "Received Green signal for Intersection #" << intersectionId << " Vehicle #" << vehicleId<< std::endl;
       return;
     }
   }
@@ -46,7 +47,7 @@ void TrafficLight::cycleThroughPhases() {
   auto previousUpdateCycle = std::chrono::system_clock::now();
   std::random_device randomFromDevice;
   std::mt19937 generator(randomFromDevice());
-  std::uniform_real_distribution<> distribution(4000.0, 6000.0);
+  std::uniform_real_distribution<> distribution(20000.0, 25000.0);
   float timeThreshold = distribution(generator);
   while (true) {
     auto currentCycleTime = std::chrono::system_clock::now();

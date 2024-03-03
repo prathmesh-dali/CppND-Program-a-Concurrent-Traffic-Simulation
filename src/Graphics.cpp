@@ -55,6 +55,14 @@ void Graphics::drawTrafficObjects() {
                                          : cv::Scalar(0, 0, 255);
       cv::circle(_images.at(1), cv::Point2d(posx, posy), 25, trafficLightColor,
                  -1);
+      auto TEXT_FACE = cv::FONT_HERSHEY_DUPLEX;
+      auto TEXT_SCALE = 1.5;
+      auto TEXT_THICKNESS = 2;
+      auto TEXT = std::to_string(intersection->getID());
+      auto textSize = cv::getTextSize(TEXT,TEXT_FACE,TEXT_SCALE,TEXT_THICKNESS, 0);
+      auto px = posx - textSize.height / 2;
+      auto py = posy + textSize.width /2;
+      cv::putText(_images.at(1), TEXT, cv::Point2d(px, py),TEXT_FACE, TEXT_SCALE, cv::Scalar(255,255,255),5);
     } else if (it->getType() == ObjectType::objectVehicle) {
       cv::RNG rng(it->getID());
       int b = rng.uniform(0, 255);
@@ -63,6 +71,14 @@ void Graphics::drawTrafficObjects() {
                    b * b);  // ensure that length of color vector is always 255
       cv::Scalar vehicleColor = cv::Scalar(b, g, r);
       cv::circle(_images.at(1), cv::Point2d(posx, posy), 50, vehicleColor, -1);
+      auto TEXT_FACE = cv::FONT_HERSHEY_DUPLEX;
+      auto TEXT_SCALE = 1.5;
+      auto TEXT_THICKNESS = 2;
+      auto TEXT = std::to_string(it->getID());
+      auto textSize = cv::getTextSize(TEXT,TEXT_FACE,TEXT_SCALE,TEXT_THICKNESS, 0);
+      auto px = posx - textSize.height / 2;
+      auto py = posy + textSize.width /2;
+      cv::putText(_images.at(1), TEXT, cv::Point2d(px, py),TEXT_FACE, TEXT_SCALE, cv::Scalar(255,255,255),5);
     }
   }
 
