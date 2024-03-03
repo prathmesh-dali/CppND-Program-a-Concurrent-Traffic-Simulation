@@ -8,6 +8,7 @@
 template <typename T>
 T MessageQueue<T>::receive() {
   std::unique_lock<std::mutex> uLck(_mutex);
+  _queue.clear();
   _cond.wait(uLck, [this] { return !_queue.empty(); });
 
   T msg = std::move(_queue.back());
