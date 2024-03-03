@@ -2,7 +2,7 @@
 
 <img src="data/image.png"/>
 
-This repository contains a concurrent traffic light simulation which uses c++ concurrent features to build a communication protocol between vehicle and intersections to mange the seemles traffic flow. 
+This repository contains a concurrent traffic light simulation which uses c++ concurrent features to build a communication protocol between vehicle and intersections to mange the seamless traffic flow. 
 
 ## Dependencies for Running Locally
 * cmake >= 2.8
